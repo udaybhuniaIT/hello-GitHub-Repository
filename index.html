@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Card</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #141e30, #49306b, #a044ff);
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px #0005;
+}
+
+.login-box h1 {
+    color: #8e44ad;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #a044ff;
+}
+
+label {
+    display: block;
+    text-align: left;
+    color: #444;
+    margin-top: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #8e44ad, #e84393);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+/* Birthday Card */
+
+#birthdayCard {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: 25px;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 22px;
+    border: 3px solid #fff;
+    background: linear-gradient(135deg, #fff0f6, #f3e5ff, #fff8d6);
+    box-shadow: 0 12px 35px #0005;
+    animation: showCard 1s ease;
+}
+
+#birthdayCard::before {
+    content: "🎈 ✨ 🎉 ✨ 🎈";
+    display: block;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+#birthdayCard h2 {
+    color: #d63384;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.cake {
+    font-size: 65px;
+    margin: 10px 0;
+    animation: bounce 1.5s infinite;
+}
+
+#showName {
+    margin: 12px 0;
+    color: #7928ca;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: bold;
+    font-style: italic;
+    overflow-wrap: anywhere;
+    text-shadow: 2px 2px 5px #e0b0ff;
+}
+
+.date-title {
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#showDate {
+    margin-top: 8px;
+    color: #c2185b;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.wishes {
+    margin-top: 22px;
+    padding: 18px 12px;
+    background: linear-gradient(135deg, #ff4f9a, #9b51e0);
+    color: white;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.7;
+    box-shadow: 0 5px 15px #c65ca555;
+}
+
+.small-text {
+    margin-top: 18px;
+    color: #8e44ad;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+@keyframes showCard {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        display: block;
+    }
+
+    .login-box, #printButton {
+        display: none !important;
+    }
+
+    #birthdayCard {
+        display: block !important;
+        box-shadow: none;
+        margin: 20px auto;
+        max-width: 400px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Login Page -->
+
+    <div class="login-box">
+        <h1>🎂 Birthday Login</h1>
+        <p>Enter your details to create your Birthday Card!</p>
+
+        <form id="birthdayForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter Your Name"
+                required
+            >
+
+            <label for="dob">Date of Birth</label>
+
+            <input
+                type="date"
+                id="dob"
+                required
+            >
+
+            <button type="submit">LOGIN ✨</button>
+
+        </form>
+    </div>
+
+    <!-- Birthday Card -->
+
+    <div id="birthdayCard">
+
+        <h2>🎉 HAPPY BIRTHDAY 🎉</h2>
+
+        <div class="cake">🎂</div>
+
+        <p style="color:#777;">This Special Day Is For</p>
+
+        <div id="showName"></div>
+
+        <div class="date-title">🎁 DATE OF BIRTH 🎁</div>
+
+        <div id="showDate"></div>
+
+        <div class="wishes">
+            💖 শুভ জন্মদিন 💖<br>
+            তোমার জীবন আনন্দে ভরে উঠুক।<br>
+            প্রতিটি দিন বয়ে আনুক সুখ,<br>
+            সাফল্য ও নতুন স্বপ্ন।<br>
+            তোমার সব ইচ্ছা পূরণ হোক! 🌹
+        </div>
+
+        <div class="small-text">
+            MADE WITH LOVE ❤️
+        </div>
+
+        <button id="printButton" onclick="window.print()">
+            🖨️ Print Birthday Card
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("birthdayForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const dob = document.getElementById("dob").value;
+
+    if (!name || !dob) {
+        alert("Please enter your name and date of birth.");
+        return;
+    }
+
+    const date = new Date(dob + "T00:00:00");
+
+    document.getElementById("showName").textContent = name;
+
+    document.getElementById("showDate").textContent =
+        date.toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+        });
+
+    document.getElementById("birthdayCard").style.display = "block";
+
+    document.getElementById("birthdayCard").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+</script>
+
+</body>
+</html>
